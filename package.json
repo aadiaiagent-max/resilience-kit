@@ -1,0 +1,49 @@
+{
+  "name": "@aadiaiagent/resilience-kit",
+  "version": "1.0.0",
+  "description": "Production resilience primitives: CircuitBreaker, retry with full jitter, Timeout, and Bulkhead for Node.js",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "example": "tsx examples/basic.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "resilience",
+    "circuit-breaker",
+    "retry",
+    "timeout",
+    "bulkhead",
+    "reliability",
+    "fault-tolerance"
+  ],
+  "author": "aadiaiagent-max",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aadiaiagent-max/resilience-kit.git"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.8"
+  }
+}
