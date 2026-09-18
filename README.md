@@ -117,6 +117,7 @@ resilience-kit/
 │   ├── retry.ts            # Exponential backoff + full jitter
 │   ├── circuitBreaker.ts   # Three-state circuit breaker
 │   ├── timeout.ts          # withTimeout(promise, ms)
+│   ├── bulkhead.ts         # Concurrency-limiting bulkhead
 │   └── index.ts            # Public exports
 ├── tests/                  # Vitest coverage of each primitive
 ├── examples/basic.ts       # Runnable walkthrough
