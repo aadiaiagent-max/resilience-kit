@@ -1,21 +1,21 @@
 # @aadiaiagent/resilience-kit
 
-**Staff-level reliability primitives for Node.js** — CircuitBreaker, retry with exponential backoff + full jitter, Timeout, and Bulkhead. Zero runtime dependencies. ESM. MIT.
+**Reliability primitives for Node.js** — CircuitBreaker, retry with exponential backoff + full jitter, Timeout, and Bulkhead. Zero runtime dependencies. ESM. MIT.
 
-Built as a portfolio showcase of production-minded fault-tolerance patterns used by platform / reliability engineers: fail-fast isolation, controlled retries, and dependency protection without a heavy framework.
+Production-minded fault-tolerance patterns: fail-fast isolation, controlled retries, and dependency protection without a heavy framework. Small surface area — readable in one sitting.
 
 ---
 
 ## Why this exists
 
-Hiring managers evaluating Staff SWE / Platform / Reliability candidates look for evidence that you:
+Reliable services need clear answers for:
 
-1. Understand *when* to trip a circuit vs. when to retry.
-2. Prefer fail-fast bulkheads over unbounded queues.
-3. Choose full jitter over naïve exponential backoff (AWS Architecture Blog).
-4. Ship typed, tested, dependency-light libraries that compose cleanly.
+1. *When* to trip a circuit vs. when to retry.
+2. Preferring fail-fast bulkheads over unbounded queues.
+3. Choosing full jitter over naïve exponential backoff (AWS Architecture Blog).
+4. Shipping typed, tested, dependency-light libraries that compose cleanly.
 
-This kit is that evidence — small, composable, production-shaped.
+This kit is that toolkit — small, composable, production-shaped.
 
 ---
 
@@ -100,7 +100,7 @@ await bh.execute(() =>
 | Choice | Rationale |
 |--------|-----------|
 | **Full jitter** (`random(0, min(maxMs, base × 2ⁿ))`) | Desynchronises clients better than equal/decorrelated jitter for typical client retry storms. |
-| **Fail-fast bulkhead** (reject, don't queue) | Queues hide overload and create unbounded latency; Staff platform work prefers shedding load early. |
+| **Fail-fast bulkhead** (reject, don't queue) | Queues hide overload and create unbounded latency; prefer shedding load early. |
 | **Lazy open → half-open** | Transition checked on `getState()` / `execute()` — no background timers, simpler for serverless / short-lived processes. |
 | **No AbortController inside Timeout** | Promises aren't cancellable by default; callers own abort semantics so we don't pretend to cancel work. |
 | **Zero runtime deps** | Auditable surface area; only `typescript` / `vitest` / `tsx` as devDeps. |
